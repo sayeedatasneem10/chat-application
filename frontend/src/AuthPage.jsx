@@ -1,11 +1,13 @@
 import axios from "axios"
 
 const AuthPage = (props) => {
+    const url='https://chat-application-backend-avx4.onrender.com'
+    
     const onSubmit = (e) => {
       e.preventDefault()
       const { value } = e.target[0]
       axios.post(
-        'http://localhost:3001/authenticate',
+        url +'/authenticate',
         {username:value}
       )
       .then(r=> props.onAuth({...r.data,secret:value}))
